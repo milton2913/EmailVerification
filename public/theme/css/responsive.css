@@ -1,0 +1,110 @@
+/*  ---------------------- X-Small Device Start ----------------------  */
+@media (min-width: 320px) and (max-width: 575px){
+    /* Index Page start */
+    .navbar-toggler {
+        font-size: 2rem;
+    }
+
+    .navbar-nav {
+        margin-top: 30px;
+    }
+
+    .heading_24 {
+        font-size: 20px;
+        margin: 35px 0 35px 0;
+    }
+
+    .main_box {
+        flex-direction: column;
+    }
+
+    .content_box {
+        width: 100%;
+        background-color: #fff;
+        padding: 50px 20px 20px;
+    }
+
+    .student_details {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    /* Certificate page start */
+    .certificate_box {
+        padding-left: 0;
+    }
+
+    .certificate_box_inner {
+        border: 5px solid #2E3094;
+    }
+}
+/*  ---------------------- X-Small Device end ----------------------  */
+
+/*  ---------------------- Small Device Start ----------------------  */
+@media (min-width: 576px) and (max-width: 767px){
+    /* Index Page start */
+    .heading_24 {
+        font-size: 20px;
+        margin: 35px 0 35px 0;
+    }
+
+    .main_box {
+        flex-direction: column;
+    }
+
+    .content_box {
+        width: 100%;
+        background-color: #fff;
+        padding: 50px 20px 20px;
+    }
+
+    .student_details {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    /* Certificate page start */
+    .certificate_box {
+        padding-left: 0;
+    }
+}
+/*  ---------------------- Small Device End ----------------------  */
+
+/*  ---------------------- Medium Device start ---------------------- */
+@media (min-width: 768px) and (max-width: 991px){
+    /* Index Page start */
+    .main_box {
+        flex-direction: column;
+    }
+
+    .content_box {
+        width: 100%;
+        background-color: #fff;
+        padding: 50px 20px 20px;
+    }
+
+    .student_details {
+        width: 100%;
+        margin-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .tab-content {
+        padding: 0 50px;
+    }
+
+    /* Certificate page start */
+    .certificate_box {
+        padding-left: 0;
+    }
+}
+/*  ---------------------- Medium Device end ---------------------- */
+
+/*  ---------------------- Large Device start ---------------------- */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .student_info {
+        padding: 35px 24px 16px 24px;
+    }
+}
+/*  ---------------------- Large Device end ---------------------- */

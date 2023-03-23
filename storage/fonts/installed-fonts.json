@@ -1,0 +1,21 @@
+{
+    "serial_no": {
+        "normal": "serial_no_normal_96482b42f0b6a05b2637b511dc9244c0"
+    },
+    "faculty": {
+        "normal": "faculty_normal_b6907781076f2568fe6220a44b5fc4d4"
+    },
+    "name": {
+        "normal": "\/home\/milton\/Project\/CertificateVerification\/storage\/fonts\/name_normal_c9df8c580a0d702e25f7be718b28c0ea",
+        "bold": "name_bold_c9df8c580a0d702e25f7be718b28c0ea"
+    },
+    "program": {
+        "normal": "program_normal_87be3e0a01f004535af0da89b10fdd1f"
+    },
+    "student_id_no": {
+        "normal": "student_id_no_normal_7ed0bdd186f56d603230ad1ca4496c8f"
+    },
+    "normaltext": {
+        "normal": "normaltext_normal_e03f53c5ca254ca9e9e64703ea19e213"
+    }
+}

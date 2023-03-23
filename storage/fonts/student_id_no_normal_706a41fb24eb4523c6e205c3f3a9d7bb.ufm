@@ -1,0 +1,222 @@
+StartFontMetrics 4.1
+Notice Converted by PHP-font-lib
+Comment https://github.com/PhenX/php-font-lib
+EncodingScheme FontSpecific
+Copyright Copyright 2016  Extram Studios
+FontName Grafipaint
+FontSubfamily Regular
+UniqueID FontForge 2.0 : Grafipaint Regular : 11-9-2016
+FullName Grafipaint
+Version Version 2 
+PostScriptName Grafipaint
+Manufacturer Extram Studios
+Designer Lewis Bauer
+Description Grafipaint was designed in September 2016 by Lewis Bauer (Extram Studios), and available on DaFONT.
+FontDesignerURL mailto:ryqol@outlook.com
+LicenseURL http://scripts.sil.org/ofl
+Weight Medium
+ItalicAngle 0
+IsFixedPitch false
+UnderlineThickness 50
+UnderlinePosition -125
+FontHeightOffset 90
+Ascender 741
+Descender -200
+FontBBox -4 -200 989 741
+StartCharMetrics 112
+U 32 ; WX 421 ; N space ; G 3
+U 33 ; WX 151 ; N exclam ; G 4
+U 34 ; WX 283 ; N quotedbl ; G 5
+U 35 ; WX 705 ; N numbersign ; G 6
+U 36 ; WX 473 ; N dollar ; G 7
+U 37 ; WX 645 ; N percent ; G 8
+U 38 ; WX 476 ; N ampersand ; G 9
+U 39 ; WX 138 ; N quotesingle ; G 10
+U 40 ; WX 209 ; N parenleft ; G 11
+U 41 ; WX 229 ; N parenright ; G 12
+U 42 ; WX 338 ; N asterisk ; G 13
+U 43 ; WX 453 ; N plus ; G 14
+U 44 ; WX 249 ; N comma ; G 15
+U 45 ; WX 371 ; N hyphen ; G 16
+U 46 ; WX 172 ; N period ; G 17
+U 47 ; WX 323 ; N slash ; G 18
+U 48 ; WX 449 ; N zero ; G 19
+U 49 ; WX 284 ; N one ; G 20
+U 50 ; WX 441 ; N two ; G 21
+U 51 ; WX 418 ; N three ; G 22
+U 52 ; WX 486 ; N four ; G 23
+U 53 ; WX 430 ; N five ; G 24
+U 54 ; WX 481 ; N six ; G 25
+U 55 ; WX 505 ; N seven ; G 26
+U 56 ; WX 392 ; N eight ; G 27
+U 57 ; WX 376 ; N nine ; G 28
+U 58 ; WX 165 ; N colon ; G 29
+U 59 ; WX 246 ; N semicolon ; G 30
+U 60 ; WX 574 ; N less ; G 31
+U 61 ; WX 532 ; N equal ; G 32
+U 62 ; WX 650 ; N greater ; G 33
+U 63 ; WX 405 ; N question ; G 34
+U 64 ; WX 789 ; N at ; G 35
+U 65 ; WX 753 ; N A ; G 36
+U 66 ; WX 686 ; N B ; G 37
+U 67 ; WX 460 ; N C ; G 38
+U 68 ; WX 595 ; N D ; G 39
+U 69 ; WX 617 ; N E ; G 40
+U 70 ; WX 578 ; N F ; G 41
+U 71 ; WX 550 ; N G ; G 42
+U 72 ; WX 684 ; N H ; G 43
+U 73 ; WX 509 ; N I ; G 44
+U 74 ; WX 643 ; N J ; G 45
+U 75 ; WX 506 ; N K ; G 46
+U 76 ; WX 457 ; N L ; G 47
+U 77 ; WX 653 ; N M ; G 48
+U 78 ; WX 624 ; N N ; G 49
+U 79 ; WX 652 ; N O ; G 50
+U 80 ; WX 637 ; N P ; G 51
+U 81 ; WX 680 ; N Q ; G 52
+U 82 ; WX 765 ; N R ; G 53
+U 83 ; WX 475 ; N S ; G 54
+U 84 ; WX 635 ; N T ; G 55
+U 85 ; WX 518 ; N U ; G 56
+U 86 ; WX 546 ; N V ; G 57
+U 87 ; WX 777 ; N W ; G 58
+U 88 ; WX 774 ; N X ; G 59
+U 89 ; WX 572 ; N Y ; G 60
+U 90 ; WX 498 ; N Z ; G 61
+U 94 ; WX 423 ; N asciicircum ; G 62
+U 95 ; WX 785 ; N underscore ; G 63
+U 96 ; WX 235 ; N grave ; G 64
+U 97 ; WX 614 ; N a ; G 65
+U 98 ; WX 431 ; N b ; G 66
+U 99 ; WX 411 ; N c ; G 67
+U 100 ; WX 384 ; N d ; G 68
+U 101 ; WX 449 ; N e ; G 69
+U 102 ; WX 661 ; N f ; G 70
+U 103 ; WX 469 ; N g ; G 71
+U 104 ; WX 429 ; N h ; G 72
+U 105 ; WX 218 ; N i ; G 73
+U 106 ; WX 397 ; N j ; G 74
+U 107 ; WX 401 ; N k ; G 75
+U 108 ; WX 209 ; N l ; G 76
+U 109 ; WX 647 ; N m ; G 77
+U 110 ; WX 510 ; N n ; G 78
+U 111 ; WX 423 ; N o ; G 79
+U 112 ; WX 486 ; N p ; G 80
+U 113 ; WX 698 ; N q ; G 81
+U 114 ; WX 371 ; N r ; G 82
+U 115 ; WX 393 ; N s ; G 83
+U 116 ; WX 432 ; N t ; G 84
+U 117 ; WX 446 ; N u ; G 85
+U 118 ; WX 417 ; N v ; G 86
+U 119 ; WX 672 ; N w ; G 87
+U 120 ; WX 489 ; N x ; G 88
+U 121 ; WX 477 ; N y ; G 89
+U 122 ; WX 455 ; N z ; G 90
+U 123 ; WX 328 ; N braceleft ; G 91
+U 125 ; WX 364 ; N braceright ; G 92
+U 126 ; WX 529 ; N asciitilde ; G 93
+U 147 ; WX 311 ; N uni0093 ; G 94
+U 148 ; WX 345 ; N uni0094 ; G 95
+U 162 ; WX 422 ; N cent ; G 96
+U 163 ; WX 629 ; N sterling ; G 97
+U 167 ; WX 469 ; N section ; G 98
+U 169 ; WX 643 ; N copyright ; G 99
+U 171 ; WX 393 ; N guillemotleft ; G 100
+U 176 ; WX 275 ; N degree ; G 101
+U 187 ; WX 395 ; N guillemotright ; G 102
+U 700 ; WX 192 ; N uni02BC ; G 103
+U 8211 ; WX 571 ; N endash ; G 104
+U 8212 ; WX 1014 ; N emdash ; G 105
+U 8216 ; WX 235 ; N quoteleft ; G 106
+U 8217 ; WX 252 ; N quoteright ; G 107
+U 8226 ; WX 278 ; N bullet ; G 108
+U 8242 ; WX 201 ; N minute ; G 109
+U 8243 ; WX 339 ; N second ; G 110
+U 8364 ; WX 624 ; N Euro ; G 111
+EndCharMetrics
+StartKernData 
+StartKernPairs 72
+
+KPX dollar colon -28
+KPX dollar A 93
+KPX dollar E 5
+KPX dollar I 130
+KPX dollar O 15
+KPX dollar P 7
+KPX dollar S 45
+KPX dollar U 43
+
+KPX parenright colon 127
+KPX parenright A -247
+KPX parenright E -92
+KPX parenright I 43
+KPX parenright O -39
+KPX parenright P -209
+KPX parenright S -110
+KPX parenright U -44
+
+KPX slash colon -147
+KPX slash A 148
+KPX slash E 78
+KPX slash I 103
+KPX slash O 61
+KPX slash P 147
+KPX slash S 146
+KPX slash U 54
+
+KPX three colon 137
+KPX three A -25
+KPX three E -40
+KPX three I 53
+KPX three O 36
+KPX three P -54
+KPX three S 97
+KPX three U 114
+
+KPX seven colon -103
+KPX seven A -136
+KPX seven E -127
+KPX seven I 32
+KPX seven O -109
+KPX seven P -173
+KPX seven S -127
+KPX seven U -108
+
+KPX nine colon 118
+KPX nine A -21
+KPX nine E -11
+KPX nine I 58
+KPX nine O 22
+KPX nine P -53
+KPX nine S 32
+KPX nine U 48
+
+KPX colon colon 133
+KPX colon A -19
+KPX colon E 1
+KPX colon I 49
+KPX colon O 26
+KPX colon P -45
+KPX colon S 19
+KPX colon U 38
+
+KPX less colon 108
+KPX less A -85
+KPX less E -94
+KPX less I 40
+KPX less O -60
+KPX less P -120
+KPX less S -21
+KPX less U -15
+
+KPX W colon 102
+KPX W A -24
+KPX W E -5
+KPX W I 9
+KPX W O 32
+KPX W P -44
+KPX W S 55
+KPX W U 72
+EndKernPairs
+EndKernData
+EndFontMetrics

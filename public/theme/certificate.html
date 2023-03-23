@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU Certificate Verification</title>
+
+    <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+
+    <!-- ----------------------- Google Font start ----------------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- ----------------------- Google Font end ----------------------- -->
+
+    <!-- ----------------------- css start ----------------------- -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- ----------------------- css end ----------------------- -->
+</head>
+<body>
+    <!-- ----------------------- preloader start ----------------------- -->
+    <div id="preloader"></div>
+    <!-- ----------------------- preloader end ----------------------- -->
+    
+    <!-- ----------------------- Navbar start ----------------------- -->
+    <nav class="navbar navbar-expand-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/diu_logo.png" alt="DIU Logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn regular_btn" href="#">Login with Metamask</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ----------------------- Navbar end ----------------------- -->
+
+    <!-- ----------------------- main section start ----------------------- -->
+    <section id="main">
+        <div class="container">
+            <h2 class="heading_24">DIU Student Certificate Verification</h2>
+
+            <div class="row">
+                <div class="offset-xxl-1 col-xxl-10 offset-xl-1 col-xl-10 offset-lg-1 col-lg-10 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                            <div class="student_info">
+                                <h6 class="sub_heading mt_10">Students Details</h6>
+                                <p class="text_14 mb_15">Certificate Serial No: <span class="text_semibold">321345</span></p>
+                                <p class="text_14 student_name mb_15"><span>Student Name: </span><span class="text_semibold">Khondker Mohammad Shah-Al-Mamun</span></p>
+                                <p class="text_14 mb_15">Obtained CGPA: <span class="text_semibold">3.90</span></p>
+                                <p class="text_14 mb_15">Certificate Issue Date: <span class="text_semibold">23-08-2022</span></p>
+                            </div>
+                        </div>
+        
+                        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                            <div class="certificate_box">
+                                <!-- <iframe src="./files/certificate.pdf" frameborder="0" width="100%" height="500px"></iframe> -->
+                                <div class="certificate_box_inner">
+                                    <img src="./files/certificate.jpg" alt="certificate">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn_box_download mt_24">
+                            <a href="./files/certificate.pdf" class="btn regular_btn">Save Certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ----------------------- main section end ----------------------- -->
+
+    <!-- ----------------------- script start ----------------------- -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- ----------------------- script end ----------------------- -->
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "codeToName": [],
+    "isUnicode": true,
+    "EncodingScheme": "FontSpecific",
+    "FontName": "MICR 012 BT",
+    "FullName": "MICR 012 BT",
+    "Version": "mfgpctt-v1.57 Wednesday, February 24, 1993 10:20:07 am (EST)",
+    "PostScriptName": "MICR12byBT-Regular",
+    "Weight": "Medium",
+    "ItalicAngle": "0",
+    "IsFixedPitch": "true",
+    "UnderlineThickness": "60",
+    "UnderlinePosition": "-100",
+    "FontHeightOffset": "0",
+    "Ascender": "705",
+    "Descender": "-177",
+    "FontBBox": [
+        "0",
+        "-177",
+        "550",
+        "705"
+    ],
+    "CIDtoGID_Compressed": true,
+    "CIDtoGID": "eJztwTEBAAAAwqD1T+1hDaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbgAeAAE=",
+    "_version_": 6
+}

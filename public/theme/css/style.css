@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Poppins", Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.8;
+	font-weight: 400;
+	color: #333;
+    min-height: 100vh;
+    background-color: #FAFAFA;
+}
+
+button {
+    border-radius: 4px !important;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+/* ----------------------- preloader start ----------------------- */
+#preloader {
+    background: #fff url(../images/loader.gif) no-repeat center center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10000;
+}
+/* ----------------------- preloader end ----------------------- */
+
+/* ----------------------- Common CSS start ----------------------- */
+.regular_btn {
+    background: #2E3094;
+    border: 1px solid #2E3094;
+    color: #fff;
+    padding: .375rem .75rem;
+}
+
+.regular_btn:hover {
+    border-color: #FFBC42;
+    color: #FFBC42;
+    background-color: #fff;
+}
+
+.outline_btn {
+    background: #fff;
+    border: 1px solid #2E3094;
+    color: #2E3094;
+    padding: .375rem .75rem;
+}
+
+.text_light {
+    color: rgba(51, 51, 51, .5) !important;
+}
+
+.text_white {
+    color: #fff;
+}
+
+.text_light_2 {
+    color: rgba(255, 255, 255, .75);
+}
+
+.text_semibold {
+    font-weight: 500;
+}
+
+.text_14 {
+    font-size: 14px;
+}
+
+.student_detail_box {
+    text-align: center;
+}
+
+.heading_24 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 50px 0 60px 0;
+    text-align: center;
+}
+
+.sub_heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.title_text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.mt_50 {
+    margin-top: 50px;
+}
+
+.mt_35 {
+    margin-top: 35px;
+}
+
+.mt_24 {
+    margin-top: 24px;
+}
+
+.mt_10 {
+    margin-top: 10px;
+}
+
+.mb_15 {
+    margin-bottom: 15px;
+}
+/* ----------------------- Common CSS end ----------------------- */
+
+/* ----------------------- navbar start ----------------------- */
+nav {
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(216, 216, 216, .5);
+    background-color: #fff;
+}
+
+.navbar-nav {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navbar-brand img {
+    display: block;
+    height: 38px;
+    width: auto;
+}
+/* ----------------------- navbar end ----------------------- */
+
+/* ----------------------- main start ----------------------- */
+#main {
+    padding-bottom: 100px;
+}
+
+.main_box {
+    display: flex;
+    height: 100%;
+    -webkit-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    -moz-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+}
+
+.content_box {
+    width: 62%;
+    background-color: #fff;
+    padding: 50px 70px 40px 70px;
+}
+
+.nav-pills {
+    justify-content: center;
+}
+
+.nav-pills .nav-link {
+	background: transparent;
+	border: 1px solid #fff;
+	border-radius: 4px;
+    font-weight: 500;
+    color: #6B6B6B;
+    text-transform: capitalize;
+    padding: .375rem 1rem;
+    letter-spacing: 1px;
+}
+
+.nav-pills .nav-link.active {
+    color: #2E3094;
+    background-color: #fff;
+    border: 1px solid #2E3094;
+}
+
+.upload_field .form-control {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    height: 38px;
+    font-family: "Poppins", Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #333;
+}
+
+.upload_field .form-control:focus, .upload_field .form-control:focus-visible {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    outline: 0;
+	box-shadow: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.student_details {
+    background-color: #2E3094;
+    width: 38%;
+    height: 100%;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* ----------------------- main end ----------------------- */
+
+.student_info {
+    background-color: #fff;
+    height: 100%;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    -moz-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+}
+
+.certificate_box {
+    padding-left: 50px;
+}
+
+.certificate_box_inner {
+    border: 10px solid #2E3094;
+    -webkit-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    -moz-box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 3px 14px 0px rgba(0,0,0,0.12);
+}
+
+.certificate_box_inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.btn_box_download {
+    text-align: right;
+}
