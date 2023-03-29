@@ -36,6 +36,7 @@ class Bulk extends Model
         'total',
         'progress',
         'run_time',
+        'created_by_id'
         ];
 
     public function validEmails()

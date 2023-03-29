@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            {{--                <form method="POST" action="{{ route("buyer.singleVerify") }}" enctype="multipart/form-data">--}}
+            @include('buyer.single-verify-form')
 
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             List of Tasks
@@ -14,13 +21,13 @@
                         <th width="10">
                         </th>
                         <th>
-                          Task Id
+                            Task Id
                         </th>
                         <th>
-                           Task Date
+                            Task Date
                         </th>
                         <th>
-                           Task Name
+                            Task Name
                         </th>
                         <th>
                             Status
@@ -29,7 +36,7 @@
                             Total Emails
                         </th>
                         <th>
-                           Progress
+                            Progress
                         </th>
                         <th>
                             &nbsp;Action
@@ -62,9 +69,9 @@
                                 {{ $task->progress ?? '' }}
                             </td>
                             <td>
-                                    <a class="btn btn-xs btn-primary" href="{{ route('buyer.tasksReport', $task->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
+                                <a class="btn btn-xs btn-primary" href="{{ route('buyer.tasksReport', $task->id) }}">
+                                    {{ trans('global.view') }}
+                                </a>
                             </td>
 
                         </tr>
@@ -74,6 +81,8 @@
             </div>
         </div>
     </div>
+</div>
+
 
 
 

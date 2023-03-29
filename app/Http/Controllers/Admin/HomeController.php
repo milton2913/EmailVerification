@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Controller;
+use App\Models\Bulk;
 use App\Models\ValidEmail;
 use Illuminate\Http\Request;
 use App\Services\EmailVerifier;
@@ -76,16 +77,72 @@ return $result['is_disposable']['status'];
 
     public function verify()
     {
-        $email = "milton2913@gmail.com";
+
+        $email = "milton2913@gfgfmail.com";
+
+//       $data =  ['email' => $email, 'user_id' => auth()->id(),  'created_by_id' => auth()->id(), 'where_to_check' => 'Task'];
+//       $validEmail = ValidEmail::create($data);
+        $validEmail = ValidEmail::find(270);
+        $data['process_time'] = "0.100009954";
+        $validEmail->update($data);
+
+dd('te');
+
+
+
+
         $email = trim($email);
         $start = hrtime(true);
         $result = $this->checkEmailAddress3($email);
 //        $result = $this->checkEmailAddress($email);
         $end = hrtime(true); // End time in nanoseconds
         $elapsed = (($end - $start) / 1e6)/1000; // Processing time in milliseconds
-        $result['process_time'] = "$elapsed second";
+        $result['process_time'] = "$elapsed";
+
+        $updated = $this->emailDataSave($result,$validEmail);
         return $result;
+
     }
+
+
+    function emailDataSave($result,$validEmail)
+    {
+        $data['is_syntax_check'] = $result['is_syntax_check']['status'] === true ? '0' : '1';
+        $data['is_disposable'] = $result['is_disposable']['status'] === true ? '0' : '1';
+        $data['is_free_email'] = $result['is_free_email']['status'] === false ? '0' : '1';
+        $data['is_domain'] = $result['is_domain']['status'] === true ? '0' : '1';
+        $data['is_mx_record'] = $result['is_mx_record']['status'] === true ? '0' : '1';
+        $data['is_smtp_valid'] = $result['is_smtp_valid']['status'] === true ? '0' : '1';
+        $data['is_username'] = $result['is_username']['status'] === true ? '0' : '1';
+        $data['is_catch_all'] = $result['is_catch_all']['status'] === false ? '0' : '1';
+        $data['is_role'] = $result['is_role']['status'] === false ? '0' : '1';
+        $data['process_time'] = $result['process_time'];
+        $data['email_score'] = $result['email_score'];
+        if ($result['success'] !== true) {
+            $data['is_valid_email'] = '2';
+        } else {
+            $data['is_valid_email'] = '1';
+            if ($result['is_catch_all']['status'] !== false) {
+                $data['is_valid_email'] = '3';
+            }
+        }
+
+        $this->updateBulkTask($data,$validEmail);
+        $validEmail->update($data);
+    }
+
+
+
+public function updateBulkTask($data,$validEmail){
+    $bulk = $validEmail->bulks;
+    $data['run_time'] = $data['process_time'];
+    $bulk->update($data);
+}
+
+
+
+
+
 
     public function checkEmailAddress3($email)
     {

@@ -84,6 +84,11 @@ class User extends Authenticatable
             }
         });
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'user_id', 'id');
+    }
     public function userValidEmails()
     {
         return $this->hasMany(ValidEmail::class, 'user_id', 'id');

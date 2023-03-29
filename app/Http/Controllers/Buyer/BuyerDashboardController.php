@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Package;
+use App\Models\Purchase;
 use App\Models\ValidEmail;
 use App\Services\EmailVerifier;
 use Carbon\Carbon;
@@ -110,10 +112,24 @@ class BuyerDashboardController extends Controller
 
     public function singleVerify(Request $request)
     {
+
+        if (Purchase::checkPackageLimit(1)!==true){
+            $data = [
+                'message' => "NOTICE",
+                'details' => [
+                    'status' => "NOTICE",
+                    'Note'=>'If you don\'t have enough credit, verify your email before you purchase credit'
+                ]
+            ];
+          return $data;
+//            return "If you don't have enough credit, verify your email before you purchase credit";
+        }
+
         $email = $request->input('email');
         // sleep(3);
         $emailVerify = new EmailVerifier();
         $result = $emailVerify->verify($email);
+       // return $result;
         $this->emailDataSave($result, $email, 'dashboard');
         $data = [
             'message' => $result['success'] === true ? "VALID" : "INVALID",
@@ -134,9 +150,10 @@ class BuyerDashboardController extends Controller
                 'email_score' => $result['email_score']
             ]
         ];
-
         return $data;
     }
+
+
 
     function emailDataSave($result, $email, $where_to_check)
     {
@@ -145,7 +162,7 @@ class BuyerDashboardController extends Controller
         $data['where_to_check'] = $where_to_check;
         $data['is_syntax_check'] = $result['is_syntax_check']['status'] === true ? '0' : '1';
         $data['is_disposable'] = $result['is_disposable']['status'] === true ? '0' : '1';
-        $data['->is_free_email'] = $result['is_free_email']['status'] === false ? '0' : '1';
+        $data['is_free_email'] = $result['is_free_email']['status'] === false ? '0' : '1';
         $data['is_domain'] = $result['is_domain']['status'] === true ? '0' : '1';
         $data['is_mx_record'] = $result['is_mx_record']['status'] === true ? '0' : '1';
         $data['is_smtp_valid'] = $result['is_smtp_valid']['status'] === true ? '0' : '1';
@@ -156,10 +173,8 @@ class BuyerDashboardController extends Controller
         $data['email_score'] = $result['email_score'];
         $data['user_id'] = auth()->id();
         $data['created_by_id'] = auth()->id();
-
-
-
         ValidEmail::create($data);
+        Purchase::updatePackageLimit(1);
     }
 
 }

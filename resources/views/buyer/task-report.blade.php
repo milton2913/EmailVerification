@@ -3,25 +3,7 @@
     <div class="content">
         <div class="row">
             <div class="col-12">
-{{--                <form method="POST" action="{{ route("admin.permissions.store") }}" enctype="multipart/form-data">--}}
-                    <form id="my-form" action="{{ route("buyer.singleVerify") }}" method="POST">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                        </div>
-                        <input type="email" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" name="email" id="email" value="{{ old('email', '') }}" required>
-                        <div class="input-group-prepend">
-                            <button  type="submit" class="btn btn-dark">Verify</button>
-                        </div>
-                        @if($errors->has('title'))
-                            <span class="text-danger">{{ $errors->first('title') }}</span>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.permission.fields.title_helper') }}</span>
-                    </div>
-
-                </form>
-
+@include('buyer.single-verify-form')
             </div>
 
             <div class="col-lg-6">
@@ -34,14 +16,14 @@
                         <div class="row">
 
                             <div class="col-md-6">
-                                <p><strong>{{ "Task ID:" }}</strong>{{ $bulk->id }}</p>
-                                <p><strong>{{ "Status:" }}</strong>{{ $bulk->status }}</p>
-                                <p><strong>{{ "Progress:" }}</strong>{{ $bulk->progress }}</p>
+                                <p><strong>{{ "Task ID: " }}</strong> {{ $bulk->id }}</p>
+                                <p><strong>{{ "Status: " }}</strong> {{ $bulk->status }}</p>
+                                <p><strong>{{ "Progress: " }}</strong> {{ $bulk->progress }}% </p>
                             </div>
                             <div class="col-md-6">
-                                <p><strong>{{ "Start Date & Time:" }}</strong>{{ \Carbon\Carbon::parse($bulk->created_at)->format(' h:i A, j  F , Y') }}</p>
-                                <p><strong>{{ "End Date & Time :" }}</strong>{{ \Carbon\Carbon::parse($bulk->updated_at)->format(' h:i A, j  F , Y') }}</p>
-                                <p><strong>{{ "Runtime:" }}</strong>{{ $bulk->run_time }}</p>
+                                <p><strong>{{ "Start Date & Time: " }}</strong>{{ \Carbon\Carbon::parse($bulk->created_at)->format(' h:i A, j  F , Y') }}</p>
+                                <p><strong>{{ "End Date & Time : " }}</strong>{{ \Carbon\Carbon::parse($bulk->updated_at)->format(' h:i A, j  F , Y') }}</p>
+                                <p><strong>{{ "Runtime: " }}</strong>{{ $bulk->run_time }}</p>
                             </div>
 
                         </div>
@@ -56,21 +38,72 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="row">
+                        <div class="table-responsive">
+                            <table class=" table table-bordered table-striped table-hover datatable datatable-AuditLog">
+                                <thead>
+                                <tr>
+                                    <th width="10">
+                                    </th>
+                                    <th>
+                                        Task Id
+                                    </th>
+                                    <th>
+                                        Task Date
+                                    </th>
+                                    <th>
+                                        Task Name
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Total Emails
+                                    </th>
+                                    <th>
+                                        Progress
+                                    </th>
+                                    <th>
+                                        &nbsp;Action
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($bulks as $key => $task)
+                                    <tr data-entry-id="{{ $task->id }}">
+                                        <td>
 
-                            <div class="col-md-6">
-                                <p><strong>{{ "Task ID:" }}</strong>{{ $bulk->id }}</p>
-                                <p><strong>{{ "Status:" }}</strong>{{ $bulk->status }}</p>
-                                <p><strong>{{ "Progress:" }}</strong>{{ $bulk->progress }}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><strong>{{ "Start Date & Time:" }}</strong>{{ \Carbon\Carbon::parse($bulk->created_at)->format(' h:i A, j  F , Y') }}</p>
-                                <p><strong>{{ "End Date & Time :" }}</strong>{{ \Carbon\Carbon::parse($bulk->updated_at)->format(' h:i A, j  F , Y') }}</p>
-                                <p><strong>{{ "Runtime:" }}</strong>{{ $bulk->run_time }}</p>
-                            </div>
+                                        </td>
+                                        <td>
+                                            {{ $task->id ?? '' }}
+                                        </td>
+                                        <td>
 
+                                            {{ \Carbon\Carbon::parse($task->created_at)->format(' h:i A, j  F , Y') }}
+                                        </td>
+                                        <td>
+                                            {{ $task->name ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $task->status ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $task->total ?? '' }}
+                                        </td>
+                                        <td>
+                                            {{ $task->progress ?? '' }}
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-xs btn-primary" href="{{ route('buyer.tasksReport', $task->id) }}">
+                                                {{ trans('global.view') }}
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div id="totalOverview"></div>
+
                     </div>
                 </div>
             </div>
@@ -280,35 +313,6 @@
     <script>
         $(function () {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-            @can('valid_email_delete')
-            let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
-            let deleteButton = {
-                text: deleteButtonTrans,
-                url: "{{ route('admin.valid-emails.massDestroy') }}",
-                className: 'btn-danger',
-                action: function (e, dt, node, config) {
-                    var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-                        return entry.id
-                    });
-
-                    if (ids.length === 0) {
-                        alert('{{ trans('global.datatables.zero_selected') }}')
-
-                        return
-                    }
-
-                    if (confirm('{{ trans('global.areYouSure') }}')) {
-                        $.ajax({
-                            headers: {'x-csrf-token': _token},
-                            method: 'POST',
-                            url: config.url,
-                            data: { ids: ids, _method: 'DELETE' }})
-                            .done(function () { location.reload() })
-                    }
-                }
-            }
-            dtButtons.push(deleteButton)
-            @endcan
 
             let dtOverrideGlobals = {
                 buttons: dtButtons,

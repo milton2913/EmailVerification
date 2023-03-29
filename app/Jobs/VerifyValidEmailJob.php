@@ -31,6 +31,7 @@ class VerifyValidEmailJob implements ShouldQueue
      *
      * @return void
      */
+    public $tries = 3;
     public function handle()
     {
         $verifyEmail = new EmailVerifier();

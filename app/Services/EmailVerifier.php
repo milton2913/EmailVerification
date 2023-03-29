@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use App\Models\Bulk;
 use App\Models\ValidEmail;
 use ElliotJReed\DisposableEmail\DisposableEmail;
 use Illuminate\Http\Request;
@@ -12,32 +13,35 @@ class EmailVerifier
 
     public function emailVerify($validEmail){
         $result = $this->verify($validEmail->email);
-        $validEmail->is_syntax_check = $result['is_syntax_check']['status']===true?'0':'1';
-        $validEmail->is_disposable = $result['is_disposable']['status']===true?'0':'1';
-        $validEmail->is_free_email = $result['is_free_email']['status']===false?'0':'1';
-        $validEmail->is_domain = $result['is_domain']['status']===true?'0':'1';
-        $validEmail->is_mx_record = $result['is_mx_record']['status']===true?'0':'1';
-        $validEmail->is_smtp_valid = $result['is_smtp_valid']['status']===true?'0':'1';
-        $validEmail->is_username = $result['is_username']['status']===true?'0':'1';
-        $validEmail->is_catch_all = $result['is_catch_all']['status']===false?'0':'1';
-        $validEmail->is_role = $result['is_role']['status']===false?'0':'1';
-        $validEmail->process_time = $result['process_time'];
-        $validEmail->email_score = $result['email_score'];
-        if ($result['success']!==true){
-            $validEmail->is_valid_email='2';
-             if ($result['is_disposable']['status']!==true){
-                $validEmail->is_valid_email='5';
-            }
-        }else{
-            if ($result['is_catch_all']['status']!==false){
-                $validEmail->is_valid_email='3';
-            } else if ($result['is_role']['status']===true){
-                $validEmail->is_valid_email='4';
-            }else{
-                $validEmail->is_valid_email='4';
+        $this->singleDataUpdate($result,$validEmail);
+    }
+
+
+
+    public function singleDataUpdate($result,$validEmail){
+        $data['is_syntax_check'] = $result['is_syntax_check']['status'] === true ? '0' : '1';
+        $data['is_disposable'] = $result['is_disposable']['status'] === true ? '0' : '1';
+        $data['is_free_email'] = $result['is_free_email']['status'] === false ? '0' : '1';
+        $data['is_domain'] = $result['is_domain']['status'] === true ? '0' : '1';
+        $data['is_mx_record'] = $result['is_mx_record']['status'] === true ? '0' : '1';
+        $data['is_smtp_valid'] = $result['is_smtp_valid']['status'] === true ? '0' : '1';
+        $data['is_username'] = $result['is_username']['status'] === true ? '0' : '1';
+        $data['is_catch_all'] = $result['is_catch_all']['status'] === false ? '0' : '1';
+        $data['is_role'] = $result['is_role']['status'] === false ? '0' : '1';
+        $data['process_time'] = $result['process_time'];
+        $data['email_score'] = $result['email_score'];
+        if ($result['success'] !== true) {
+            $data['is_valid_email'] = '2';
+        } else {
+            $data['is_valid_email'] = '1';
+            if ($result['is_catch_all']['status'] !== false) {
+                $data['is_valid_email'] = '3';
             }
         }
+        $validEmail->update($data);
+
     }
+
 
     public function verify($email)
     {
@@ -47,7 +51,7 @@ class EmailVerifier
 //        $result = $this->checkEmailAddress($email);
         $end = hrtime(true); // End time in nanoseconds
         $elapsed = (($end - $start) / 1e6)/1000; // Processing time in milliseconds
-        $result['process_time'] = "$elapsed second";
+        $result['process_time'] = "$elapsed";
         return $result;
     }
 

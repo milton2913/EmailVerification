@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Bulk;
 use App\Models\ValidEmail;
 use App\Services\EmailVerifier;
 class ValidEmailObserver
@@ -14,6 +15,7 @@ class ValidEmailObserver
      */
     public function created(ValidEmail $validEmail)
     {
+
        $emailVerify = new EmailVerifier();
        $result = $emailVerify->verify($validEmail->email);
        if ($result['success']===true){
@@ -33,7 +35,7 @@ class ValidEmailObserver
      */
     public function updated(ValidEmail $validEmail)
     {
-        //
+
     }
 
     /**

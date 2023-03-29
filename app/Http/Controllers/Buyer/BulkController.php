@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\VerifyValidEmailJob;
+use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Bulk;
@@ -22,9 +23,25 @@ class BulkController extends Controller
 
     public function bulkVerify(Request $request)
     {
+
+
+
         $name = $request->input('name');
         $emails = $request->input('emails');
         $emails = $this->emailFilter($emails);
+        $total = count($emails);
+        if (Purchase::checkPackageLimit($total)!==true){
+            $data = [
+                'message' => "NOTICE",
+                'details' => [
+                    'status' => "NOTICE",
+                    'Note'=>'If you don\'t have enough credit, verify your email before you purchase credit'
+                ]
+            ];
+            return $data;
+//            return "If you don't have enough credit, verify your email before you purchase credit";
+        }
+
         // Create a new Bulk record
         $bulkData = [
             'name' => $name,
@@ -34,12 +51,14 @@ class BulkController extends Controller
             'total' => count($emails),
             'progress' => 0,
             'run_time' => '0',
+            'created_by_id' =>  auth()->id(),
         ];
         $bulk = Bulk::create($bulkData);
+
         // Prepare the email data for insertion
         $emailData = [];
         foreach ($emails as $email) {
-            $emailData[] = ['email' => $email, 'user_id' => auth()->id(), 'where_to_check' => $request->input('bulk_type')];
+            $emailData[] = ['email' => $email, 'user_id' => auth()->id(),  'created_by_id' => auth()->id(), 'where_to_check' => $request->input('bulk_type')];
         }
 
         $chunks = array_chunk($emailData, 500);
@@ -113,26 +132,47 @@ class BulkController extends Controller
     }
     public function tasksReport($id){
 
-$users = User::get();
-        $bulk = Bulk::findOrFail($id);
+        $users = User::get();
+        $bulks = Bulk::where('user_id',auth()->id())->get();
 
+        $bulk = Bulk::findOrFail($id);
+        if ($bulk->validEmails->count()>0){
+            $bulkUpdateData['run_time'] = $bulk->validEmails()->sum('process_time');
+
+            $email_process_check = count($bulk->validEmails()->where('is_valid_email','0')->get());
+            $bulkUpdateData['progress'] = (($bulk->validEmails->count()-$email_process_check)/$bulk->validEmails->count())*100;
+            if ($email_process_check==0){
+                $bulkUpdateData['status'] = 'Completed';
+            }else if ($bulk->validEmails->count()>=$email_process_check){
+                $bulkUpdateData['status'] = 'Process';
+            }else{
+                $bulkUpdateData['status'] = 'Interval';
+            }
+            $bulk->update($bulkUpdateData);
+        }
         $overviews = array();
         $validEmails = $bulk->validEmails()->get(['is_valid_email', 'is_syntax_check', 'is_disposable', 'is_free_email', 'is_domain', 'is_mx_record', 'is_smtp_valid', 'is_username', 'is_catch_all', 'is_role']);
 
         $total = count($validEmails);
-        $is_valid_email = count($validEmails->where('is_valid_email', '1'));
-        $is_disposable = count($validEmails->where('is_disposable', '0'));
+
+        $is_valid_email = count($validEmails->where('is_valid_email', '1')->where('is_role','0'));
+        $is_process_state = count($validEmails->where('is_valid_email', '0'));
+
+        $is_disposable = count($validEmails->where('is_disposable', '0')->where('is_valid_email','!=','0'));
         $is_role = count($validEmails->where('is_role', '1'));
-        $is_catch_all = count($validEmails->where('is_catch_all', '1'))-$is_role;
-        $safe = $is_valid_email - ($is_catch_all + $is_role);
-        $invalid = $total - $is_valid_email;
+        $is_catch_all = count($validEmails->where('is_valid_email', '3')->where('is_role','0'));
+        $safe = $is_valid_email;
+        $invalid = count($validEmails->where('is_valid_email', '2'))-$is_disposable;
+
+
         array_push($overviews, ['category' => 'Safe', 'value' => $safe]);
         array_push($overviews, ['category' => 'Disposable', 'value' => $is_disposable]);
         array_push($overviews, ['category' => 'Catch All', 'value' => $is_catch_all]);
         array_push($overviews, ['category' => 'Role', 'value' => $is_role]);
         array_push($overviews, ['category' => 'Invalid', 'value' => $invalid]);
+        array_push($overviews, ['category' => 'Process', 'value' => $is_process_state]);
 
-        return view('buyer.task-report',compact('bulk','overviews','total','users'));
+        return view('buyer.task-report',compact('bulk','overviews','total','users','bulks'));
 
     }
 

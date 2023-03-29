@@ -140,13 +140,36 @@
                         </a>
                     </li>
                 @endcan
-                @can('in_valid_email_access')
+
+                @can('benefit_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.in-valid-emails.index") }}" class="nav-link {{ request()->is("admin/in-valid-emails") || request()->is("admin/in-valid-emails/*") ? "c-active" : "" }}">
+                        <a href="{{ route("admin.benefits.index") }}" class="nav-link {{ request()->is("admin/benefits") || request()->is("admin/benefits/*") ? "c-active" : "" }}">
                             <i class="fa-fw fas fa-cogs nav-icon">
 
                             </i>
-                            {{ trans('cruds.inValidEmail.title') }}
+                            {{ trans('cruds.benefit.title') }}
+                        </a>
+                    </li>
+                @endcan
+
+
+                @can('package_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.packages.index") }}" class="nav-link {{ request()->is("admin/packages") || request()->is("admin/packages/*") ? "c-active" : "" }}">
+                            <i class="fa-fw fas fa-cogs nav-icon">
+
+                            </i>
+                            {{ trans('cruds.package.title') }}
+                        </a>
+                    </li>
+                @endcan
+                @can('purchase_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.purchases.index") }}" class="nav-link {{ request()->is("admin/purchases") || request()->is("admin/purchases/*") ? "c-active" : "" }}">
+                            <i class="fa-fw fas fa-cogs nav-icon">
+
+                            </i>
+                            {{ trans('cruds.purchase.title') }}
                         </a>
                     </li>
                 @endcan

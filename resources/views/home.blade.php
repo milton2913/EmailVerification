@@ -2,6 +2,12 @@
 @section('content')
     <div class="content">
         <div class="row">
+            <div class="col-12">
+                @include('buyer.single-verify-form')
+            </div>
+        </div>
+
+        <div class="row">
 
 
             <div class="col-lg-6">

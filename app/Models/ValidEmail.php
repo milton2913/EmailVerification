@@ -15,7 +15,6 @@ class ValidEmail extends Model
     use MultiTenantModelTrait;
     use Auditable;
     use HasFactory;
-
     public const IS_ACTIVE_SELECT = [
         '1' => 'Yes',
         '0' => 'No',

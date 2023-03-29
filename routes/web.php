@@ -14,6 +14,9 @@ use App\Http\Controllers\Admin\ValidEmailsController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Buyer\BuyerDashboardController;
 use App\Http\Controllers\Buyer\BulkController;
+use App\Http\Controllers\Admin\PackagesController;
+use App\Http\Controllers\Admin\PurchasesController;
+use App\Http\Controllers\Admin\BenefitsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,9 +89,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
         'roles' => RolesController::class,
         'users' => UsersController::class,
         'valid-emails' => ValidEmailsController::class,
+        'packages' => PackagesController::class,
+        'benefits' => BenefitsController::class,
 
     ]);
+    // Packages
+    Route::delete('packages/destroy',  [PackagesController::class,'massDestroy'])->name('packages.massDestroy');
+    // Purchases
+    Route::resources(['purchases' => PurchasesController::class], ['except' => ['destroy']]);
 
+    // Benefits
+    Route::delete('benefits/destroy',  [BenefitsController::class,'massDestroy'])->name('benefits.massDestroy');
     // Valid Emails
     Route::delete('valid-emails/destroy',  [ValidEmailsController::class,'massDestroy'])->name('valid-emails.massDestroy');
     Route::post('valid-emails/parse-csv-import',  [ValidEmailsController::class,'parseCsvImport'])->name('valid-emails.parseCsvImport');
